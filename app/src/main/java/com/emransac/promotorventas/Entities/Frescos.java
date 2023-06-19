@@ -2,7 +2,7 @@ package com.emransac.promotorventas.Entities;
 
 public class Frescos {
     String id,name;
-    public Frescos() {
+    public Frescos(int conatdor, String producto_fresco) {
     }
 
     public Frescos(String id, String name){

@@ -10,6 +10,7 @@
         android:layout_width="19dp"
         android:layout_height="20dp"
         android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"
         android:background="@drawable/rectangle"
         android:gravity="center_vertical|center"
         android:text="13"
@@ -34,9 +35,8 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="30dp"
             android:text="Comino batan molido"
-            android:textStyle="bold"
             android:textColor="@color/black"
-            android:textSize="11dp"
+            android:textSize="16dp"
             />
     </RelativeLayout>
 

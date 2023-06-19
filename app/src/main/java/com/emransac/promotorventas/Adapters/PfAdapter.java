@@ -25,6 +25,10 @@ public class PfAdapter extends RecyclerView.Adapter<PfAdapter.ViewHolder>  {
         this.pfList = pfList;
     }
 
+    public List<Frescos> getPfList() {
+        return pfList;
+    }
+
     // Métodos del adaptador
 
     @NonNull

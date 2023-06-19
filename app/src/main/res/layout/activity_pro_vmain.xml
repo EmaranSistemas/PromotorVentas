@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -70,25 +71,35 @@
                         />
                 </LinearLayout>
 
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginEnd="15dp"
+                    >
                 <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="190dp"
-                    android:layout_height="40dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
                     android:layout_margin="0dp"
                     android:layout_gravity="top"
                     android:paddingEnd="1dp"
-                    android:hint="Vendedor"
+                    android:hint="DISTRIBUIDOR"
                     android:layout_alignParentRight="true"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
                     >
                     <AutoCompleteTextView
-                        android:id="@+id/productos_txt"
+                        android:id="@+id/distribuidor_txt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="10sp"
+                        android:textSize="12sp"
                         android:inputType="none"
                         android:layout_alignParentRight="true"
                         />
                 </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
 
             </LinearLayout>
         </LinearLayout>
@@ -108,7 +119,7 @@
             >
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="wrap_content"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:hint="CLIENTE"
                 android:layout_marginStart="20dp"
@@ -116,25 +127,31 @@
                 >
                 <AutoCompleteTextView
                     android:id="@+id/cliente_txt"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
                     android:padding="6dp"
                     android:textSize="13sp"
                     android:layout_alignParentRight="true" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="80dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="TELEFONO"
                 android:layout_marginStart="5dp"
+                android:layout_marginEnd="15dp"
+
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 >
                 <AutoCompleteTextView
                     android:id="@+id/telefono_txt"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:padding="6dp"
                     android:textSize="13sp"
                     android:inputType="number"
@@ -143,31 +160,41 @@
             </com.google.android.material.textfield.TextInputLayout>
 
 
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="DIRECCION"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginEnd="10dp"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                    >
-                    <AutoCompleteTextView
-                        android:id="@+id/Dirección_txt"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="6dp"
-                        android:textSize="13sp"
-                        android:layout_alignParentRight="true" />
-
-                </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 
+
+
+
         </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="15dp"
+            >
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="DIRECCION"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="10dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                >
+                <AutoCompleteTextView
+                    android:id="@+id/direccion_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:padding="6dp"
+                    android:textSize="13sp"
+                    android:layout_alignParentRight="true" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+
 
 
         <LinearLayout
@@ -184,9 +211,9 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 >
                 <AutoCompleteTextView
-                    android:id="@+id/Nombreco_txt"
+                    android:id="@+id/nombreco_txt"
                     android:layout_width="150dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:padding="6dp"
                     android:textSize="13sp"
                     android:layout_alignParentRight="true" />
@@ -199,7 +226,7 @@
                 android:orientation="vertical">
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="35dp"
+                    android:layout_height="57dp"
                     android:hint="CATEGORIA"
                     android:layout_marginStart="5dp"
                     android:layout_marginEnd="10dp"
@@ -208,16 +235,30 @@
                         android:id="@+id/categoria_txt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="6dp"
-                        android:textSize="13sp"
+                        android:inputType="none"
+                        android:textSize="12sp"
                         android:layout_alignParentRight="true" />
 
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
+
         </LinearLayout>
     </LinearLayout>
 
     <!--  fin escabezado de la vista datos -->
+
+
+        <!--
+                            <AutoCompleteTextView
+                        android:id="@+id/distribuidor_txt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="10sp"
+                        android:inputType="none"
+                        android:layout_alignParentRight="true"
+                        />
+        -->
+
 
     <!--  inicio escabezado de la vista datos -->
     <LinearLayout
@@ -231,7 +272,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="POLVOS"
-            android:textSize="15dp"
+            android:textSize="18dp"
             android:textStyle="bold"
             />
 
@@ -271,18 +312,26 @@
         </LinearLayout>
     </LinearLayout>
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="170dp"
-        >
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/mypolvos"
+
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-             />
-    </androidx.appcompat.widget.LinearLayoutCompat>
+            android:layout_height="90dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="15dp"
+
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="#6FF4F0"
+            >
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/mypolvos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </androidx.cardview.widget.CardView>
+
+
 
 
     <LinearLayout
@@ -296,12 +345,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="FRESCOS"
-            android:textSize="15dp"
+            android:textSize="18dp"
             android:textStyle="bold"
             />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="150dp"
+            android:layout_width="137dp"
             android:layout_height="wrap_content"
             android:hint="frescos"
             android:layout_marginStart="5dp"
@@ -337,27 +386,34 @@
     </LinearLayout>
 
 
-        <androidx.appcompat.widget.LinearLayoutCompat
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="90dp"
             android:layout_marginStart="20dp"
+            android:layout_marginEnd="15dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="#89CF93"
             >
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/myfrecos"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
-        </androidx.appcompat.widget.LinearLayoutCompat>
+                android:layout_height="wrap_content" />
+        </androidx.cardview.widget.CardView>
+
+
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_marginTop="5dp"
         android:layout_marginStart="20dp">
 
         <CheckBox
-            android:id="@+id/Exhibidor"
+            android:id="@+id/exhibidor"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -366,7 +422,7 @@
             android:checked="false" />
 
         <CheckBox
-            android:id="@+id/POP"
+            android:id="@+id/pop"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -396,7 +452,7 @@
             android:layout_height="wrap_content"
             android:padding="6dp"
             android:textSize="13sp"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:layout_alignParentRight="true" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -425,13 +481,15 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
+            android:id="@+id/btn_guardar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="AGREGAR IMAGEN"
+            android:text="GUARDAR REPORTE"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="10dp"
             />
     </LinearLayout>
+
 </LinearLayout>
 </androidx.core.widget.NestedScrollView>
