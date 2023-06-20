@@ -1,11 +1,14 @@
 package com.emransac.promotorventas;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -27,6 +30,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.emransac.promotorventas.Adapters.PfAdapter;
 import com.emransac.promotorventas.Entities.Frescos;
+import com.emransac.promotorventas.Ubication.GpsTracker;
 
 import org.json.JSONArray;
 
@@ -41,11 +45,13 @@ public class ProVMainActivity extends AppCompatActivity {
     private RecyclerView recyclerView, recyclerView2;
     private PfAdapter adapter, adapter2;
 
-    String[] distribuidores = {"Distribuidor1","Distribuidor2","Distribuidor3","Distribuidor4"};
+    String[] distribuidores = {"Adriel","Francisco","Clara","Rodolfo","Juan Carlos","María","Carmen","Mirtha"};
     String[] categorias = {"Bodega","Minimarket","Supermercado","Especiería","Puesto de Mercado",
             "Tienda de Abarrotes","Food Truck","Puesto de Comida","Snack","Carniceria","Pizzeria","Otros"};
     String Distribuidor;
     String categoriasfinal;
+
+    GpsTracker gpsTracker;
     AutoCompleteTextView distribuidor;
     AutoCompleteTextView categoria;
     ArrayAdapter<String> adapterdistribuidores;
@@ -70,6 +76,13 @@ public class ProVMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pro_vmain);
 
+        try { //Request Permission if not permitted
+            if (ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 101);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
         pro_frecos.clear();
@@ -191,8 +204,13 @@ public class ProVMainActivity extends AppCompatActivity {
     }
 
     private void insertData() {
-
-
+        try { //Request Permission if not permitted
+            if (ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 101);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         final String distribuidor = Distribuidor;
         final String cliente = txtCliente.getText().toString().trim();//obligatorio
@@ -286,6 +304,12 @@ public class ProVMainActivity extends AppCompatActivity {
                     String valorCadena2 = String.valueOf(isCheckedPop);
 
 
+                    String a_lat = "0";
+                    String a_lon = "0";
+                    a_lat = getLocs(1);
+                    a_lon = getLocs(2);
+
+
                     params.put("distribuidor",distribuidor);
                     params.put("cliente",cliente);
                     params.put("telefono",telefono);
@@ -300,6 +324,8 @@ public class ProVMainActivity extends AppCompatActivity {
                     params.put("isCheckedPop",valorCadena2);
                     params.put("ventas",ventas);
                     params.put("observaciones",observaciones);
+                    params.put("longitud",a_lon);
+                    params.put("latitud",a_lat);
                     return params;
                 }
             };
@@ -320,8 +346,33 @@ public class ProVMainActivity extends AppCompatActivity {
                 "  Exhibidor: " + isCheckedEx +
                 "  Pop: " + isCheckedPop +
                 "  Ventas" + ventas +
-                "  Observaciones: " + observaciones);
+                "  Observaciones: " + observaciones+
+                "  Long: " + ventas +
+                "  Latitud: " + observaciones
+        );
     }
+
+    public String getLocs(int ID) { //Get Current Lat and Lon 1=lat, 2=lon
+        String asd_lat = "";
+        String asd_lon = "";
+        gpsTracker = new GpsTracker(ProVMainActivity.this);
+        if (gpsTracker.canGetLocation()) {
+            double latitude = gpsTracker.getLatitude();
+            double longitude = gpsTracker.getLongitude();
+            asd_lat = String.valueOf(latitude);
+            asd_lon = String.valueOf(longitude);
+        } else {
+            gpsTracker.showSettingsAlert();
+        }
+        if (ID == 1) {
+            return asd_lat;
+        } else if (ID == 2) {
+            return asd_lon;
+        } else {
+            return "0";
+        }
+    }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
